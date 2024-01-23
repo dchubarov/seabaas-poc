@@ -10,11 +10,19 @@ repositories {
 }
 
 dependencies {
+    val jacksonVersion by properties
+    val kotlinLoggingVersion by properties
+    val logbackVersion by properties
+    val slf4jVersion by properties
+
+    // Jackson
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
 
     // Logging
-    api("org.slf4j:slf4j-api:2.0.11")
-    api("io.github.oshai:kotlin-logging-jvm:6.0.3")
-    runtimeOnly("ch.qos.logback:logback-classic:1.4.14")
+    api("org.slf4j:slf4j-api:$slf4jVersion")
+    api("io.github.oshai:kotlin-logging-jvm:$kotlinLoggingVersion")
+    runtimeOnly("ch.qos.logback:logback-classic:$logbackVersion")
 
     // Test-only dependencies
     testImplementation("org.jetbrains.kotlin:kotlin-test")
