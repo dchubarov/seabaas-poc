@@ -1,4 +1,4 @@
-package org.twowls.poc.seabaas.schema.base
+package org.twowls.poc.seabaas.schema
 
 /**
  * Represent a compound schema element.

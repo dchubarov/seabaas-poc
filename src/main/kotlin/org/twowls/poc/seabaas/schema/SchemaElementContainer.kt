@@ -1,4 +1,4 @@
-package org.twowls.poc.seabaas.schema.base
+package org.twowls.poc.seabaas.schema
 
 /**
  * Represents a container of zero or more schema elements.

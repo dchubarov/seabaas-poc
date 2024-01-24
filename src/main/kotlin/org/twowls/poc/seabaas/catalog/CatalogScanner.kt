@@ -1,4 +1,4 @@
-package org.twowls.poc.seabaas.schema.catalog
+package org.twowls.poc.seabaas.catalog
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import java.nio.file.LinkOption
@@ -14,7 +14,7 @@ import kotlin.io.path.name
 
 private val logger = KotlinLogging.logger { }
 
-fun scanSchemaCatalog(rootDir: Path, maxDepth: Int = 1) {
+fun scanCatalog(rootDir: Path, maxDepth: Int = 1) {
     check(rootDir.isDirectory()) { "Schema catalog root path is not a directory: $rootDir" }
     logger.info { "Scanning schema catalog ${rootDir.toAbsolutePath().normalize()}..." }
     logger.debug { "\tmaximum depth $maxDepth" }
