@@ -19,6 +19,12 @@ fun main() {
             }
 
             embedment("ownership", embeddedSchemaName = "post-ownership")
+            relationship("comments", relatedSchemaName = "comment")
+        }
+
+        schema("comment") {
+            relationship("reporter", relatedSchemaName = "user")
+            field("date-posted")
         }
     }
 
