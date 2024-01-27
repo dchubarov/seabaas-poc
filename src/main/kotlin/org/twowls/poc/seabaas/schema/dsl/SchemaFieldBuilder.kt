@@ -2,8 +2,11 @@ package org.twowls.poc.seabaas.schema.dsl
 
 import org.twowls.poc.seabaas.schema.SchemaFieldElement
 
-@SchemaDsl
-class SchemaFieldBuilder(name: String) : AbstractSchemaElementBuilder<SchemaFieldElement>(name) {
+class SchemaFieldBuilder(
+    override val name: String
+) : SchemaElementBuilderScope, AbstractSchemaElementBuilder<SchemaFieldElement>() {
+    override var docs: String? = null
+
     override fun build(): SchemaFieldElement =
         SchemaFieldElement(name, docs)
 }

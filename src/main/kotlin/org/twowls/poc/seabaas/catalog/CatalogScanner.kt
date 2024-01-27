@@ -10,7 +10,7 @@ import kotlin.io.path.listDirectoryEntries
 import kotlin.io.path.name
 
 // private val yamlMapper = ObjectMapper(YAMLFactory())
-// don't forget yamlMapper.findAndRegisterModules()
+// don't forget yamlMapper.registerModule(KotlinModule())
 
 private val logger = KotlinLogging.logger { }
 

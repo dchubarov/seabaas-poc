@@ -21,4 +21,9 @@ root: catalog
     comment: schema
       author: relationship user
       content: field text
+
+    user-api: api basepath(/api/v1/user)
+      all-users: endpoint user query(*)
+      lookup-user: endpoint user query(username)
+      add-user: endpoint 
 ```

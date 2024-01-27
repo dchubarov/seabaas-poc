@@ -1,24 +1,26 @@
 package org.twowls.poc.seabaas.schema.dsl
 
 fun main() {
-    createSchemaRegistry {
+    val registry = createSchemaRegistry {
         schema("user") {
-            docs = "User data"
+            docs = "[$name] User data"
+            field("email")
         }
 
-        schema("blog") {
-            schema("metadata") {
-                field("created")
-                field("modified")
-                relationship("author", relatedSchemaName = "user") {
-                    docs = "Original post author"
-                }
-            }
-
-            docs = "Blog post data"
+        schema("post") {
+            docs = "[$name] Blog post"
             field("title")
             field("content")
-            embedment("meta", embeddedSchemaName = "metadata")
+
+            schema("post-ownership") {
+                relationship("author", relatedSchemaName = "user")
+                field("date-created")
+                field("date-updated")
+            }
+
+            embedment("ownership", embeddedSchemaName = "post-ownership")
         }
     }
+
+    println(registry)
 }
