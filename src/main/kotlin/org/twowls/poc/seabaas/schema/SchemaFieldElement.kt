@@ -8,4 +8,8 @@ package org.twowls.poc.seabaas.schema
 class SchemaFieldElement(
     override val name: String,
     override val docs: String?
-) : SchemaElement
+) : SchemaElement {
+    override fun toString(): String {
+        return "${this::class.simpleName} {name=$name}"
+    }
+}

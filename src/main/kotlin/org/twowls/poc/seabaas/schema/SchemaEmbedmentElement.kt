@@ -8,5 +8,9 @@ package org.twowls.poc.seabaas.schema
 class SchemaEmbedmentElement(
     override val name: String,
     override val docs: String?,
-    val embeddedSchema: SchemaCompoundElement
-) : SchemaElement
+    private val embeddedSchema: SchemaCompoundElement
+) : SchemaElement {
+    override fun toString(): String {
+        return "${this::class.simpleName} {name=$name, embeddedSchema=$embeddedSchema}"
+    }
+}

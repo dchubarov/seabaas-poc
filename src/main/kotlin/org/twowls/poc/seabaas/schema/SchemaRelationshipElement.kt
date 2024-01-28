@@ -8,5 +8,9 @@ package org.twowls.poc.seabaas.schema
 class SchemaRelationshipElement(
     override val name: String,
     override val docs: String?,
-    val relatedSchema: SchemaCompoundElement
-) : SchemaElement
+    private val relatedSchema: SchemaCompoundElement
+) : SchemaElement {
+    override fun toString(): String {
+        return "${this::class.simpleName} {name=$name, relatedSchema=$relatedSchema}"
+    }
+}

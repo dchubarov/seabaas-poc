@@ -28,5 +28,5 @@ fun main() {
         }
     }
 
-    println(registry)
+    println(registry.toStringHierarchy(open = " {{", close = "}}"))
 }

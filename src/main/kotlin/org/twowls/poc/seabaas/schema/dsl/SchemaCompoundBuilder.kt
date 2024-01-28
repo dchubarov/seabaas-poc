@@ -4,9 +4,7 @@ import org.twowls.poc.seabaas.schema.SchemaCompoundElement
 
 class SchemaCompoundBuilder(
     override val name: String
-) : SchemaElementBuilderScope, SchemaCompoundBuilderScope,
-    AbstractSchemaContainerBuilder<SchemaCompoundElement>() {
-
+) : SchemaCompoundBuilderScope, AbstractSchemaContainerBuilder<SchemaCompoundElement>() {
     override var docs: String? = null
 
     fun registerField(builder: SchemaFieldBuilder): SchemaCompoundBuilder {

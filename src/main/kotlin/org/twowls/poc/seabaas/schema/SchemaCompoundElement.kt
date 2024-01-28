@@ -9,4 +9,8 @@ class SchemaCompoundElement(
     override val name: String,
     override val docs: String?,
     elements: Iterable<SchemaElement>
-) : SchemaElement, SchemaElementContainer<SchemaElement>(elements)
+) : SchemaElement, SchemaElementContainer<SchemaElement>(elements) {
+    override fun toString(): String {
+        return "${this::class.simpleName} {name=$name}"
+    }
+}
