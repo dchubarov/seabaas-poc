@@ -14,6 +14,7 @@ dependencies {
     val kotlinLoggingVersion: String by project
     val logbackVersion: String by project
     val slf4jVersion: String by project
+    val kotestVersion: String by project
 
     // Jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
@@ -27,12 +28,14 @@ dependencies {
 
     // Test-only dependencies
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-}
-
-tasks.test {
-    useJUnitPlatform()
+    testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
 }
 
 kotlin {
     jvmToolchain(20)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
