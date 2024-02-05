@@ -23,3 +23,15 @@ backend side development.
    * List of problems occurred while loading source schemas.
    * Server status, endpoints and their statistics.
  * Docker and Kubernetes deployment.
+
+## Notes
+
+### Autocompletion and context for custom scripts in Idea
+
+ * Project should use the same JDK version as IntelliJ Idea
+ * Script definitions are discovered by `META-INF/kotlin/script/templates`
+   * File names are fully qualified script definition classes (those annotated with `@KotlinScript`)
+ * In IntelliJ Idea settings the custom script definition should be moved above `.kts` files
+ * In IntelliJ Idea settings auto-reload should be enabled
+ * Most likely Idea needs to be restarted when schema definition changes
+   * Invalidation of caches does not seem necessary

@@ -8,5 +8,7 @@ schema("person") {
 schema("personalName") {
     field("givenName")
     field("familyName")
-    field("middleName")
+    field("middleName") {
+        docs = "Middle name, initial, or a patronym"
+    }
 }

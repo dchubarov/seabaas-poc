@@ -17,7 +17,7 @@ private val logger = KotlinLogging.logger { }
 
 class SchemaScriptTests : FunSpec({
     test("should load and evaluate test script") {
-        val resourceAsStream = SchemaScriptTests::class.java.classLoader.getResourceAsStream("test.schema.kts_")
+        val resourceAsStream = SchemaScriptTests::class.java.classLoader.getResourceAsStream("test.schema.kts")
         val script = resourceAsStream?.bufferedReader()?.use { it.readText().toScriptSource("test.kts") }
             ?: throw FileNotFoundException()
 
