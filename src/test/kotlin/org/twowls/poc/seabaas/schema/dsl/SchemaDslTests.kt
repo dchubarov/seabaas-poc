@@ -1,12 +1,10 @@
 package org.twowls.poc.seabaas.schema.dsl
 
-import io.github.oshai.kotlinlogging.KotlinLogging
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.collections.shouldMatchInOrder
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.shouldBe
-
-private val logger = KotlinLogging.logger { }
+import org.twowls.poc.seabaas.logger
 
 class SchemaDslTests : FunSpec({
     test("should build a registry with simple object consisting of two fields") {

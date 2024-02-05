@@ -1,9 +1,8 @@
-package org.twowls.poc.seabaas.schema.script
+package org.twowls.poc.seabaas.schema.dsl
 
-import io.github.oshai.kotlinlogging.KotlinLogging
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.types.shouldBeTypeOf
-import org.twowls.poc.seabaas.schema.dsl.SchemaRegistryBuilder
+import org.twowls.poc.seabaas.logger
 import java.io.FileNotFoundException
 import kotlin.script.experimental.api.ResultWithDiagnostics
 import kotlin.script.experimental.api.ScriptDiagnostic
@@ -13,18 +12,16 @@ import kotlin.script.experimental.jvmhost.BasicJvmScriptingHost
 import kotlin.script.experimental.jvmhost.createJvmCompilationConfigurationFromTemplate
 import kotlin.script.experimental.jvmhost.createJvmEvaluationConfigurationFromTemplate
 
-private val logger = KotlinLogging.logger { }
-
 class SchemaScriptTests : FunSpec({
     test("should load and evaluate test script") {
-        val resourceAsStream = SchemaScriptTests::class.java.classLoader.getResourceAsStream("test.schema.kts")
+        val resourceAsStream = SchemaScriptTests::class.java.classLoader.getResourceAsStream("scripts/test.schema.kts")
         val script = resourceAsStream?.bufferedReader()?.use { it.readText().toScriptSource("test.kts") }
             ?: throw FileNotFoundException()
 
         val rootBuilder = SchemaRegistryBuilder()
 
-        val compilationConfig = createJvmCompilationConfigurationFromTemplate<SchemaScript>()
-        val evaluationConfig = createJvmEvaluationConfigurationFromTemplate<SchemaScript> {
+        val compilationConfig = createJvmCompilationConfigurationFromTemplate<SchemaScriptTemplate>()
+        val evaluationConfig = createJvmEvaluationConfigurationFromTemplate<SchemaScriptTemplate> {
             implicitReceivers(rootBuilder)
         }
 

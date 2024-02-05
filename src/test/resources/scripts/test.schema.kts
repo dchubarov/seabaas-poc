@@ -1,3 +1,4 @@
+package scripts
 
 schema("person") {
     docs = "Person data"
@@ -9,6 +10,6 @@ schema("personalName") {
     field("givenName")
     field("familyName")
     field("middleName") {
-        docs = "Middle name, initial, or a patronym"
+        docs = "Middle name(s), initial, or a patronym"
     }
 }

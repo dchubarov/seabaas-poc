@@ -1,6 +1,5 @@
-package org.twowls.poc.seabaas.schema.script
+package org.twowls.poc.seabaas.schema.dsl
 
-import org.twowls.poc.seabaas.schema.dsl.SchemaContainerBuilderScope
 import kotlin.script.experimental.annotations.KotlinScript
 import kotlin.script.experimental.api.*
 import kotlin.script.experimental.jvm.dependenciesFromCurrentContext
@@ -9,14 +8,14 @@ import kotlin.script.experimental.jvm.jvmTarget
 
 @KotlinScript(
     fileExtension = "schema.kts",
-    displayName = "SeaBaasSchema",
-    compilationConfiguration = SchemaScript.CompilationConfig::class
+    displayName = "SeaBaaS Schema",
+    compilationConfiguration = SchemaScriptTemplate.CompilationConfig::class
 )
-abstract class SchemaScript {
+abstract class SchemaScriptTemplate {
     object CompilationConfig : ScriptCompilationConfiguration({
         jvm {
             dependenciesFromCurrentContext(wholeClasspath = true)
-            jvmTarget("17")
+            jvmTarget(System.getProperty("java.specification.version"))
         }
         ide {
             acceptedLocations(ScriptAcceptedLocation.Everywhere)
