@@ -7,9 +7,10 @@ package org.twowls.poc.seabaas.schema
  */
 class SchemaFieldElement(
     override val name: String,
-    override val docs: String?
+    override val docs: String?,
+    private val datatype: SchemaType<*>
 ) : SchemaElement {
     override fun toString(): String {
-        return "${this::class.simpleName} {name=$name}"
+        return "${this::class.simpleName} {name=$name, datatype=$datatype}"
     }
 }

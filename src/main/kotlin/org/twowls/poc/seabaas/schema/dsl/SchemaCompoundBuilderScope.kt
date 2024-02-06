@@ -1,13 +1,16 @@
 package org.twowls.poc.seabaas.schema.dsl
 
+import org.twowls.poc.seabaas.schema.SchemaType
+
 interface SchemaCompoundBuilderScope : SchemaContainerBuilderScope, SchemaElementBuilderScope
 
 inline fun SchemaCompoundBuilderScope.field(
     name: String,
+    datatype: SchemaType<*> = SchemaType.Text,
     block: SchemaElementBuilderScope.() -> Unit = {}
 ) {
     (this as SchemaCompoundBuilder)
-        .registerField(SchemaFieldBuilder(name).apply(block))
+        .registerField(SchemaFieldBuilder(name, datatype).apply(block))
 }
 
 inline fun SchemaCompoundBuilderScope.embedment(
