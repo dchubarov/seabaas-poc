@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
 }
 
 group = "org.twowls.poc.seabaas"
@@ -15,15 +16,14 @@ dependencies {
     val logbackVersion: String by project
     val slf4jVersion: String by project
     val kotestVersion: String by project
+    val kotlinxSerializationVersion: String by project
 
     // Kotlin scripting
     implementation("org.jetbrains.kotlin:kotlin-scripting-jvm")
     implementation("org.jetbrains.kotlin:kotlin-scripting-jvm-host")
 
-    // Jackson
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
-    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
+    // KotlinX serialization
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinxSerializationVersion")
 
     // Logging
     api("org.slf4j:slf4j-api:$slf4jVersion")
