@@ -35,3 +35,6 @@ backend side development.
  * In IntelliJ Idea settings auto-reload should be enabled
  * Most likely Idea needs to be restarted when schema definition changes
    * Invalidation of caches does not seem necessary
+ * Target JVM version should be set in Settings -> Build, Execution, Deployment -> 
+   Kotlin Compiler -> Kotlin to JVM. Otherwise scripts outside source root will produce
+   errors "Cannot inline bytecode version..."
