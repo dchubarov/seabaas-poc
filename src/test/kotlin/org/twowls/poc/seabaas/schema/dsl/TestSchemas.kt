@@ -1,10 +1,15 @@
 package org.twowls.poc.seabaas.schema.dsl
 
+import org.twowls.poc.seabaas.schema.SchemaElementAttribute.Cardinality
+import org.twowls.poc.seabaas.schema.SchemaElementAttribute.Required
+
 object TestSchemas {
     val blog by lazy {
         createSchemaRegistry {
             schema("user") {
-                field("email")
+                field("email") {
+                    +Required
+                }
             }
 
             schema("post") {
@@ -12,7 +17,7 @@ object TestSchemas {
                 field("content")
                 relationship("author", relatedSchemaName = "user")
                 relationship("comments", relatedSchemaName = "comment") {
-                    //+HasMany
+                    +Cardinality.ZeroOrMore
                 }
             }
 
@@ -39,7 +44,9 @@ object TestSchemas {
             schema("airport") {
                 field("iataCode")
                 field("locationCity")
-                relationship("locationCountry", relatedSchemaName = "country")
+                relationship("locationCountry", relatedSchemaName = "country") {
+                    +Cardinality.Once
+                }
             }
 
             schema("ticket") {
@@ -54,11 +61,12 @@ object TestSchemas {
 
                 embedment("segment", embeddedSchemaName = "flightSegment") {
                     docs = "Segments of this flight (up to 5)"
-                    //+Required +HasMany(5)
+                    +Cardinality.Range(1..5)
                 }
 
                 relationship("passenger", relatedSchemaName = "person") {
                     docs = "Passengers of this flight (up to 3)"
+                    +Cardinality.Range(1..3)
                 }
             }
         }

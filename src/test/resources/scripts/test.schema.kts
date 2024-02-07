@@ -2,7 +2,13 @@ package scripts
 
 schema("person") {
     docs = "Person data"
-    embedment("name", embeddedSchemaName = "personalName")
+    embedment("name", embeddedSchemaName = "personalName") {
+        +Cardinality.ZeroOrMore // multiple cardinalities causes a warning, last should survive
+        +Cardinality.ZeroOrOnce
+        +Cardinality.OnceOrMore
+
+        +Cardinality.Once
+    }
     field("age")
 }
 
