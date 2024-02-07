@@ -15,7 +15,7 @@ abstract class SchemaScriptTemplate {
     object CompilationConfig : ScriptCompilationConfiguration({
         jvm {
             dependenciesFromCurrentContext(wholeClasspath = true)
-            jvmTarget(System.getProperty("java.specification.version"))
+            jvmTarget("17")
         }
         ide {
             acceptedLocations(ScriptAcceptedLocation.Everywhere)
