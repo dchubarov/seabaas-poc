@@ -1,8 +1,5 @@
 package scripts
 
-import org.twowls.poc.seabaas.schema.SchemaElementAttribute.Required
-import org.twowls.poc.seabaas.schema.SchemaType.Text
-
 schema("person") {
     docs = "Person data"
     embedment("name", embeddedSchemaName = "personalName")

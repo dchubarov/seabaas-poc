@@ -20,7 +20,11 @@ abstract class SchemaScriptTemplate {
         ide {
             acceptedLocations(ScriptAcceptedLocation.Everywhere)
         }
-        defaultImports("org.twowls.poc.seabaas.schema.dsl.*")
+        defaultImports(
+            "org.twowls.poc.seabaas.schema.dsl.*",
+            "org.twowls.poc.seabaas.schema.SchemaType.*",
+            "org.twowls.poc.seabaas.schema.SchemaElementAttribute.*"
+        )
         implicitReceivers(SchemaContainerBuilderScope::class)
     }) {
         private fun readResolve(): Any = CompilationConfig
